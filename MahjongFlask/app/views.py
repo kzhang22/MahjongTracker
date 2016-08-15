@@ -31,7 +31,7 @@ def game():
     #print players
     form = ScoreForm(request.form)
     form.AddPlayers(players)
-    print form.playerScores
+    print form.winner
     if request.method == 'PUT':
         print "PUT \n"
     return render_template('game.html', players=players, form=form)
