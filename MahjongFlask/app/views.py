@@ -1,6 +1,7 @@
-from flask import render_template, request
+from flask import render_template, request, redirect, url_for
 from app import app
 from forms.setup_form import SetupForm
+from forms.score_form import ScoreForm
 
 players = []
 
@@ -19,16 +20,18 @@ def setup():
             players.append(request.form.get("player2"))
             players.append(request.form.get("player3"))
             players.append(request.form.get("player4"))
-            print "players:"
-            print players 
-        return render_template('game.html', players =players)
+        form = ScoreForm(request.form)
+        return redirect(url_for('game'))
     #print players
     return render_template('setup.html', form=form)
 
 
 @app.route('/game', methods=['GET', 'PUT'])
 def game():
-   #print players
+    #print players
+    form = ScoreForm(request.form)
+    form.AddPlayers(players)
+    print form.playerScores
     if request.method == 'PUT':
         print "PUT \n"
-    return render_template('game.html', players=players)
+    return render_template('game.html', players=players, form=form)

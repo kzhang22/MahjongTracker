@@ -1,4 +1,13 @@
 <html> 
   <h1>Players:</h1>
-  <p> {{ players[0] }} </p>
+  {% for player in players %}
+  	<p> {{ player }} </p>
+  {% endfor %}
+
+    <form action="" method="put" name="update">
+      <p>
+          Did winner draw the winnning tile?: {{ form.selfDraw }}<br>
+      </p>
+      <p><input type="submit" value="Update Score"></p>
+  </form>
 </html>
