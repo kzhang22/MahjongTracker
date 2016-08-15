@@ -1,7 +1,8 @@
 <html> 
   <h1>Players:</h1>
-  {% for player in players %}
-  	<p> {{ player }} </p>
+  <p> Name Score </p>
+  {% for player, score in playerScores.iteritems() %}
+  	<p> {{ player }} {{ score }} </p>
   {% endfor %}
 
     <form action="" method="put" name="update">

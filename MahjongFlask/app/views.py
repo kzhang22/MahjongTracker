@@ -29,9 +29,8 @@ def setup():
 @app.route('/game', methods=['GET', 'PUT'])
 def game():
     #print players
+    if request.method == 'PUT':
+        return render_template('game.html', playerScores = form.playerScores, form=form)
     form = ScoreForm(request.form)
     form.AddPlayers(players)
-    print form.winner
-    if request.method == 'PUT':
-        print "PUT \n"
-    return render_template('game.html', players=players, form=form)
+    return render_template('game.html', playerScores = form.playerScores, form=form)
