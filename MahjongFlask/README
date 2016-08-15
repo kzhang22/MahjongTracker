@@ -1,4 +1,9 @@
 How to activate virtual environment:
 
-cd MahjongFlask
-source bin/activate
+  cd MahjongFlask
+  source bin/activate
+
+Run app:
+  chmod a+x run.py
+  ./run.py
+
